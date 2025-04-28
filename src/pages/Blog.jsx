@@ -1,23 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './blog.css';
-const Blog = () => {
+import { LanguageContext } from '../context/LanguageContext';
+import translations from "../components/Translation"
 
+const Blog = () => {
+  const { language } = useContext(LanguageContext);
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Title Section */}
       <div className="text-center mb-12">
-        <h3 className="text-2xl uppercase font-semibold text-teal-600">Blog</h3>
-        <h2 className="text-4xl font-bold text-gray-900">Recent FB Posts</h2>
+        <h3 className="text-2xl uppercase font-semibold text-teal-600 text-center">          {translations[language].blog_title}
+        </h3>
+        <h2 className="text-4xl font-bold text-gray-900 text-center">          
+          {translations[language].blog_tagline}
+        </h2>
       </div>
 
       {/* Embed Facebook Feed */}
-      <div className="mb-8">
+      <div className="mb-8 flex justify-center">
         <div className="w-full bg-white p-0 rounded-lg shadow-lg overflow-hidden">
-          <h3 className="text-2xl font-semibold text-gray-800 mb-6">Follow Us on Facebook</h3>
+          <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">  {translations[language].footer_follow} </h3>
 
           {/* Facebook Page Plugin Embed using iframe */}
           <div
-            className="fb-page text-center flex justify-center"
+            className="fb-page "
             style={{
               width: '100%',
               height: 'auto',
@@ -39,8 +45,8 @@ const Blog = () => {
 
           </div>
 
-          <p className="text-gray-600 mt-4">
-            Stay updated with the latest posts, news, and updates from our Facebook page.
+          <p className="text-gray-600 mt-4 text-center">
+          {translations[language].blog_footer}
           </p>
         </div>
       </div>

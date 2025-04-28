@@ -1,20 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-
+import translations from "./Translation.js";
+import { LanguageContext } from "../context/LanguageContext.jsx";
 const Footer = () => {
+    const { language } = useContext(LanguageContext);
+  
   return (
     <footer className="flex justify-around items-center md:items-start text-center flex-col md:flex-row bg-[#1D2A4D] gap-4 text-base-content px-20 py-10">
     {/* Contact Info Section */}
     <div className='w-2/4'>
-      <h6 className="footer-title text-white">Lab Aid, Barishal</h6>
-      <p className="text-white">5th Floor, Room no: 607, K Jahan Center, House-106, Sadar Road, Barisal - 8200</p>
-      <p className="text-white">Email: <a href="mailto:dr.shahida2007@yahoo.com" className="link link-hover text-white">dr.shahida2007@yahoo.com</a></p>
-      <p className="text-white">Phone: <a href="tel:+8801766663305" className="link link-hover text-white">01766-663305</a></p>
+      <h6 className="footer-title text-2xl text-white">{translations[language].footer_title}</h6>
+      <h6 className="footer-title text-white">
+      {translations[language].footer_tagline}
+
+      </h6>
+      <p className="text-white">      {translations[language].footer_address}
+      </p>
+      <p className="text-white">Email: <a href="mailto:dr.shahida2007@yahoo.com" className="link link-hover text-white">      {translations[language].footer_email}
+      </a></p>
+      <p className="text-white">Phone: <a href="tel:+8801766663305" className="link link-hover text-white">      {translations[language].footer_phone}
+      </a></p>
     </div>
   
     {/* Quick Links Section */}
     <div>
-  <h6 className="footer-title text-white">Quick Links</h6>
+  <h6 className="footer-title text-white text-2xl">      {translations[language].footer_quick_menu}
+  </h6>
 <div className='flex flex-col'>
 <Link to="/" className="link link-hover text-white">Home</Link>
   <Link to="/about" className="link link-hover text-white">About</Link>
@@ -26,10 +37,11 @@ const Footer = () => {
   
     {/* Social Links Section */}
     <div>
-      <h6 className="footer-title text-white">Follow</h6>
+      <h6 className="footer-title text-white text-2xl">      {translations[language].footer_follow}
+      </h6>
       <div className="grid grid-flow-col gap-4">
          {/* Facebook Icon */}
-         <a href="https://www.facebook.com/Dr.ShahidaBegumMinu/SS" className="link link-hover">
+         <a href="https://www.facebook.com/Dr.ShahidaBegumMinu/" className="link link-hover">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

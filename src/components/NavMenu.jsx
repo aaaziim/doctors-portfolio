@@ -1,59 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClinicMedical } from '@fortawesome/free-solid-svg-icons'
-
+import { LanguageContext } from '../context/LanguageContext'
+import translations from "./Translation.js";
 const NavMenu = () => {
   const { pathname } = useLocation()
-  const [lang, setLang] = useState('en')
 
-  const toggleLanguage = () => {
-    setLang(lang === 'en' ? 'bn' : 'en')
-  }
+  const { language, changeLanguage } = useContext(LanguageContext);
 
+  
   const isActive = (path) =>
     pathname === path ? 'text-cyan-500 font-semibold' : 'text-[#001C27]'
 
-  const labels = {
-    en: {
-      home: 'Home',
-      appointment: 'Appointment',
-      blogs: 'Blogs',
-      about: 'About',
-      services: 'Services',
-      contact: 'Contact',
-      brand: 'DR SHAHIDA'
-    },
-    bn: {
-      home: 'হোম',
-      appointment: 'অ্যাপয়েন্টমেন্ট',
-      blogs: 'ব্লগ',
-      about: 'সম্পর্কে',
-      services: 'সেবা',
-      contact: 'যোগাযোগ',
-      brand: 'ডা. শাহিদা'
-    }
-  }
-
   const menu = (
     <>
-      <li><Link className={isActive('/')} to="/">{labels[lang].home}</Link></li>
-      <li><Link className={isActive('/appointment')} to="/appointment">{labels[lang].appointment}</Link></li>
-      <li><Link className={isActive('/blogs')} to="/blogs">{labels[lang].blogs}</Link></li>
-      <li><Link className={isActive('/about')} to="/about">{labels[lang].about}</Link></li>
-      <li><Link className={isActive('/services')} to="/services">{labels[lang].services}</Link></li>
-      <li><Link className={isActive('/contact')} to="/contact">{labels[lang].contact}</Link></li>
+      <li><Link className={isActive('/')} to="/">Home</Link></li>
+      <li><Link className={isActive('/appointment')} to="/appointment">Appointment</Link></li>
+      <li><Link className={isActive('/blogs')} to="/blogs">Blogs</Link></li>
+      <li><Link className={isActive('/about')} to="/about">About</Link></li>
+      <li><Link className={isActive('/services')} to="/services">Services</Link></li>
+      <li><Link className={isActive('/contact')} to="/contact">Contact</Link></li>
     </>
   )
 
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
-        {/* Brand */}
+     
         <div className="navbar-start">
           <Link to="/" className="btn btn-ghost text-xl text-cyan-500 font-bold flex items-center gap-1">
-          <FontAwesomeIcon icon={faClinicMedical} className="me-2" />
-            {labels[lang].brand}
+            <FontAwesomeIcon icon={faClinicMedical} className="me-2" />
+            {translations[language].dr_name}
+
           </Link>
         </div>
 
@@ -67,9 +46,13 @@ const NavMenu = () => {
         {/* Right: Toggle + Hamburger */}
         <div className="navbar-end flex items-center gap-2">
           {/* Language Toggle */}
-          <button onClick={toggleLanguage} className="btn btn-sm text-sm border rounded-md hover:bg-gray-100">
-            {lang === 'en' ? 'বাংলা' : 'EN'}
-          </button>
+          {language == "bn" ? <button onClick={() => changeLanguage("en")} className="btn btn-sm text-sm border rounded-md hover:bg-gray-100">
+            EN
+          </button>:  <button onClick={() => changeLanguage("bn")} className="btn btn-sm text-sm border rounded-md hover:bg-gray-100">
+          বাংলা
+          </button>}
+          
+        
 
           {/* Hamburger menu for small screens */}
           <div className="dropdown dropdown-end lg:hidden">

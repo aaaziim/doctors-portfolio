@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import doctorImg from "../assets/banner1.jpg"; // Your local image
 import { Link } from "react-router-dom";
 
+import translations from "./Translation.js";
+import { LanguageContext } from "../context/LanguageContext.jsx";
 const Hero = () => {
+    const { language } = useContext(LanguageContext);
   return (
     <div className="carousel w-full relative h-[500px]">
       {/* Slide 1 */}
@@ -24,24 +27,26 @@ const Hero = () => {
           <div className="relative z-10 h-full flex items-center px-10 lg:px-24">
             <div className="max-w-xl text-white space-y-6">
               <h1 className="text-4xl lg:text-5xl font-bold">
-                Best Women Healthcare In Your City
+              {translations[language].chamber_name}
+
               </h1>
               <p className="text-lg">
-                Providing compassionate, expert care for women at every stage of
-                life.
+              {translations[language].doctor_tagline}
+
               </p>
               <div className="flex gap-4">
                 <Link
                   to="/appointment"
                   className="px-8 py-3 text-lg font-semibold rounded-full bg-teal-500 text-white shadow-xl hover:bg-teal-600 hover:shadow-2xl transform transition-all duration-300 ease-in-out"
                 >
-                  Appointment
+                       {translations[language].appointment_title}
+
                 </Link>
                 <Link
                   to="/services"
                   className="px-8 py-3 text-lg font-semibold rounded-full border-2 border-white text-white hover:bg-white hover:text-teal-500 transition-all duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Services
+                 {translations[language].service_title}
                 </Link>
               </div>
             </div>
@@ -80,18 +85,19 @@ const Hero = () => {
               <p className="text-lg">
                 We specialize in personalized healthcare tailored to your needs.
               </p>
-              <div className="flex gap-4">
+                 <div className="flex gap-4">
                 <Link
                   to="/appointment"
                   className="px-8 py-3 text-lg font-semibold rounded-full bg-teal-500 text-white shadow-xl hover:bg-teal-600 hover:shadow-2xl transform transition-all duration-300 ease-in-out"
                 >
-                  Appointment
+                       {translations[language].appointment_title}
+
                 </Link>
                 <Link
                   to="/services"
                   className="px-8 py-3 text-lg font-semibold rounded-full border-2 border-white text-white hover:bg-white hover:text-teal-500 transition-all duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Services
+                 {translations[language].service_title}
                 </Link>
               </div>
             </div>
@@ -128,18 +134,19 @@ const Hero = () => {
               <p className="text-lg">
                 Our dedicated team ensures high-quality care for every woman.
               </p>
-              <div className="flex gap-4">
+                 <div className="flex gap-4">
                 <Link
                   to="/appointment"
                   className="px-8 py-3 text-lg font-semibold rounded-full bg-teal-500 text-white shadow-xl hover:bg-teal-600 hover:shadow-2xl transform transition-all duration-300 ease-in-out"
                 >
-                  Appointment
+                       {translations[language].appointment_title}
+
                 </Link>
                 <Link
                   to="/services"
                   className="px-8 py-3 text-lg font-semibold rounded-full border-2 border-white text-white hover:bg-white hover:text-teal-500 transition-all duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Services
+                 {translations[language].service_title}
                 </Link>
               </div>
             </div>
@@ -176,18 +183,19 @@ const Hero = () => {
               <p className="text-lg">
                 Quality care and support every step of your healthcare journey.
               </p>
-              <div className="flex gap-4">
+                 <div className="flex gap-4">
                 <Link
                   to="/appointment"
                   className="px-8 py-3 text-lg font-semibold rounded-full bg-teal-500 text-white shadow-xl hover:bg-teal-600 hover:shadow-2xl transform transition-all duration-300 ease-in-out"
                 >
-                  Appointment
+                       {translations[language].appointment_title}
+
                 </Link>
                 <Link
                   to="/services"
                   className="px-8 py-3 text-lg font-semibold rounded-full border-2 border-white text-white hover:bg-white hover:text-teal-500 transition-all duration-300 ease-in-out transform hover:scale-105"
                 >
-                  Services
+                 {translations[language].service_title}
                 </Link>
               </div>
             </div>

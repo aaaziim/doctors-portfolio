@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaStethoscope, FaSyringe, FaAmbulance, FaUserMd } from 'react-icons/fa'; // New icons
 
+import translations from "./Translation.js";
+import { LanguageContext } from "../context/LanguageContext.jsx";
 const Services = () => {
+  const { language } = useContext(LanguageContext);
   return (
     <div className="container mx-auto px-4 py-12">
       {/* Title Section */}
       <div className="text-center space-y-4 mb-12">
-        <h3 className="text-2xl uppercase font-semibold text-teal-600">SERVICES</h3>
-        <h2 className="text-4xl font-bold text-gray-900">Excellent Medical Services</h2>
+        <h3 className="text-2xl uppercase font-semibold text-teal-600">
+        {translations[language].service_title}
+        </h3>
+        <h2 className="text-4xl font-bold text-gray-900"> {translations[language].service_tagline}</h2>
       </div>
 
       {/* Services Cards Section */}
@@ -17,7 +22,9 @@ const Services = () => {
           <div className="bg-gradient-to-r from-teal-500 to-teal-300 text-white p-6 rounded-full mb-4">
             <FaStethoscope className="text-4xl" />
           </div>
-          <p className="text-xl font-semibold text-center mb-4">Outdoor Checkup</p>
+          <p className="text-xl font-semibold text-center mb-4">
+          {translations[language].service1}
+          </p>
      
         </div>
 
@@ -26,7 +33,10 @@ const Services = () => {
           <div className="bg-gradient-to-r from-teal-500 to-teal-300 text-white p-6 rounded-full mb-4">
             <FaSyringe className="text-4xl" />
           </div>
-          <p className="text-xl font-semibold text-center mb-4">Operation & Surgery</p>
+          <p className="text-xl font-semibold text-center mb-4">
+          {translations[language].service2}
+
+            </p>
     
         </div>
 
@@ -35,7 +45,10 @@ const Services = () => {
           <div className="bg-gradient-to-r from-teal-500 to-teal-300 text-white p-6 rounded-full mb-4">
             <FaAmbulance className="text-4xl" />
           </div>
-          <p className="text-xl font-semibold text-center mb-4">Emergency Care</p>
+          <p className="text-xl font-semibold text-center mb-4">
+          {translations[language].service3}
+
+            </p>
         
         </div>
  
